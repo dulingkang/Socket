@@ -33,7 +33,7 @@ class ConnectManager: NSObject, AsyncSocketDelegate {
     func socketConnectHost() {
         socket = AsyncSocket.init(delegate: self)
         do {
-            try socket?.connectToHost(socketHost, onPort: socketPort!, withTimeout: 3)
+            try socket?.connectToHost(socketHost, onPort: socketPort!, withTimeout: 5)
         } catch {
             print("connect to host: \(socketHost) error")
         }
@@ -50,7 +50,7 @@ class ConnectManager: NSObject, AsyncSocketDelegate {
         print("socket connect success")
         
         //heart beat every 30 second
-        connectTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "longConnectToSocket", userInfo: nil, repeats: true)
+        connectTimer = NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: "longConnectToSocket", userInfo: nil, repeats: true)
         connectTimer?.fire()
     }
     
