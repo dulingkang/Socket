@@ -36,36 +36,6 @@ class ViewController: UIViewController, ConnectManagerDelegate {
     
     
     func socketDidReadData(data: NSData!) {
-        print("did read data")
-        print("dataLenght:", data.length)
-
-        let headerLength: Int = 16
-
-        let headerData = data.subdataWithRange(NSMakeRange(0, 16))
-        let stream: NSInputStream = NSInputStream(data: headerData)
-        stream.open()
-        var buffer = [UInt8](count: 4, repeatedValue: 0)
-        
-        while stream.hasBytesAvailable {
-            stream.read(&buffer, maxLength: buffer.count)
-            print("buffer:", buffer)
-        }
-        
-        let leftLength: Int = data.length - headerLength
-
-        let headerMsg = NSString(data: headerData, encoding: NSUTF8StringEncoding)
-        let leftData = data.subdataWithRange(NSMakeRange(headerLength, leftLength))
-        print("headerData:", headerData)
-        print(headerMsg)
-
-        do {
-        let parsedObject = try NSJSONSerialization.JSONObjectWithData(leftData, options: NSJSONReadingOptions.AllowFragments)
-            print("parsedObject:", parsedObject)
-
-        } catch {}
-        
-    }
-
-
+            }
 }
 

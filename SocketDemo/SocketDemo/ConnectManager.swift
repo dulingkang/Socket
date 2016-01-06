@@ -12,18 +12,26 @@ enum SocketStatus {
     case SocketOnline, SocketOfflineByServer, SocketOfflineByUser
 }
 
+enum PacketType: Int {
+    case SPT_NONE = 0, SPT_STATUS, SPT_CMD, SPT_LOG, SPT_FILE_START, SPT_FILE_SENDING
+}
+
 protocol ConnectManagerDelegate {
     func socketDidReadData(data: NSData!)
 }
 
+let headerLength: Int = 12
+
 class ConnectManager: NSObject, AsyncSocketDelegate {
     static let sharedInstance = ConnectManager()
     var socket: AsyncSocket?
+    var socket1: AsyncSocket?
     var socketHost: String?
     var socketPort: UInt16?
     var connectTimer: NSTimer?
     var status: SocketStatus?
     var delegate: ConnectManagerDelegate?
+    var fileLength: Int = 0
     
     override init() {
         super.init()
@@ -32,8 +40,10 @@ class ConnectManager: NSObject, AsyncSocketDelegate {
     //MARK: - public method
     func socketConnectHost() {
         socket = AsyncSocket.init(delegate: self)
+//        socket1 = AsyncSocket.init(delegate: self)
         do {
             try socket?.connectToHost(socketHost, onPort: socketPort!, withTimeout: 5)
+//            try socket1?.connectToHost(socketHost, onPort: socketPort!, withTimeout: 5)
         } catch {
             print("connect to host: \(socketHost) error")
         }
@@ -43,6 +53,7 @@ class ConnectManager: NSObject, AsyncSocketDelegate {
         self.status = .SocketOfflineByUser
         self.connectTimer?.invalidate()
         self.socket?.disconnect()
+        self.socket1?.disconnect()
     }
     
     //MARK: - AsyncSocket delegate
@@ -62,6 +73,11 @@ class ConnectManager: NSObject, AsyncSocketDelegate {
     }
     
     func onSocket(sock: AsyncSocket!, didReadData data: NSData!, withTag tag: Int) {
+        print("did read data:")
+        print("dataLenght:", data.length)
+        
+        PacketManager.sharedInstance.handleBufferData(data)
+
         self.delegate?.socketDidReadData(data)
         self.socket!.readDataWithTimeout(3, tag: 1)
     }
@@ -73,5 +89,6 @@ class ConnectManager: NSObject, AsyncSocketDelegate {
         self.socket?.writeData(data, withTimeout: 1, tag: 1)
         self.socket!.readDataWithTimeout(3, tag: 1)
     }
-
+    
+    
 }

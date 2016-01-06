@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D9613F7899BA181778E1DE7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBA148924211AF410536B40 /* Pods.framework */; };
 		3A05BD991C33D7B600540413 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A05BD981C33D7B600540413 /* Extension.swift */; };
+		3A4049F61C3D340F0011C6DF /* PacketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4049F51C3D340F0011C6DF /* PacketManager.swift */; };
 		3A4979161C2934F3007219C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4979151C2934F3007219C4 /* AppDelegate.swift */; };
 		3A4979181C2934F3007219C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4979171C2934F3007219C4 /* ViewController.swift */; };
 		3A49791B1C2934F3007219C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A4979191C2934F3007219C4 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		05C55DBC4F7522FADEAD5632 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		0BBA148924211AF410536B40 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A05BD981C33D7B600540413 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		3A4049F51C3D340F0011C6DF /* PacketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacketManager.swift; sourceTree = "<group>"; };
 		3A4979121C2934F3007219C4 /* SocketDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4979151C2934F3007219C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A4979171C2934F3007219C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				3A4979331C294B26007219C4 /* ConnectWifi.m */,
 				3A6639991C2BD60D00E2BC82 /* ConnectManager.swift */,
 				3A05BD981C33D7B600540413 /* Extension.swift */,
+				3A4049F51C3D340F0011C6DF /* PacketManager.swift */,
 			);
 			path = SocketDemo;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A05BD991C33D7B600540413 /* Extension.swift in Sources */,
+				3A4049F61C3D340F0011C6DF /* PacketManager.swift in Sources */,
 				3A66399A1C2BD60D00E2BC82 /* ConnectManager.swift in Sources */,
 				3A4979181C2934F3007219C4 /* ViewController.swift in Sources */,
 				3A4979341C294B26007219C4 /* ConnectWifi.m in Sources */,
