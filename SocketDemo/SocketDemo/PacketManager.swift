@@ -6,12 +6,32 @@
 //  Copyright © 2016年 dulingkang. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+enum PacketType: Int {
+    case SPT_NONE = 0, SPT_STATUS, SPT_CMD, SPT_LOG, SPT_FILE_START, SPT_FILE_SENDING
+}
+
+enum PacketJson: String {
+    case fileLen, fileName
+}
+
+protocol PacketManagerDelegate {
+    func updateImage(image: UIImage)
+}
 
 class PacketManager: NSObject {
     
     static let sharedInstance = PacketManager()
+    
+    var delegate: PacketManagerDelegate?
     var bufferData = NSMutableData()
+    var fileLen: Int = 0
+    var fileOnceLen: Int = 0
+    var fileName: String = ""
+    var needSave = false
+    var fileData = NSMutableData()
+    
     override init() {}
     
     func handleBufferData(data: NSData) {
@@ -95,10 +115,22 @@ class PacketManager: NSObject {
         case .SPT_LOG:
             break
         case .SPT_FILE_START:
-            let dict = self.parseJsonBody(leftData)
+            let dict: NSDictionary = self.parseJsonBody(leftData)!
+            fileLen = dict.valueForKey(PacketJson.fileLen.rawValue) as! Int
+            fileName = dict.valueForKey(PacketJson.fileName.rawValue) as! String
+            if fileName.suffix() != "jpg" {
+                needSave = true
+            }
             
         case .SPT_FILE_SENDING:
-            break
+            fileOnceLen = fileOnceLen + payloadLength
+            if !needSave {
+                fileData.appendData(leftData)
+                if fileOnceLen == fileLen {
+                    self.delegate?.updateImage(UIImage.init(data: fileData)!)
+                }
+            }
+            
         }
     }
     

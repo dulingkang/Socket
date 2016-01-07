@@ -8,3 +8,9 @@
 
 import Foundation
 
+extension String {
+    func suffix() -> String {
+        let splitArray = self.componentsSeparatedByString(".")
+        return splitArray.last!
+    }
+}

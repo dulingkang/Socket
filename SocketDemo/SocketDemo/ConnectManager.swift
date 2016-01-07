@@ -12,13 +12,6 @@ enum SocketStatus {
     case SocketOnline, SocketOfflineByServer, SocketOfflineByUser
 }
 
-enum PacketType: Int {
-    case SPT_NONE = 0, SPT_STATUS, SPT_CMD, SPT_LOG, SPT_FILE_START, SPT_FILE_SENDING
-}
-
-protocol ConnectManagerDelegate {
-    func socketDidReadData(data: NSData!)
-}
 
 let headerLength: Int = 12
 
@@ -30,8 +23,6 @@ class ConnectManager: NSObject, AsyncSocketDelegate {
     var socketPort: UInt16?
     var connectTimer: NSTimer?
     var status: SocketStatus?
-    var delegate: ConnectManagerDelegate?
-    var fileLength: Int = 0
     
     override init() {
         super.init()
@@ -78,7 +69,6 @@ class ConnectManager: NSObject, AsyncSocketDelegate {
         
         PacketManager.sharedInstance.handleBufferData(data)
 
-        self.delegate?.socketDidReadData(data)
         self.socket!.readDataWithTimeout(3, tag: 1)
     }
     

@@ -20,6 +20,7 @@
 		3A4979311C29486D007219C4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4979301C29486D007219C4 /* SystemConfiguration.framework */; };
 		3A4979341C294B26007219C4 /* ConnectWifi.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4979331C294B26007219C4 /* ConnectWifi.m */; };
 		3A66399A1C2BD60D00E2BC82 /* ConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6639991C2BD60D00E2BC82 /* ConnectManager.swift */; };
+		3A6F5E881C3E09A1000EBDAE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F5E871C3E09A1000EBDAE /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3A4979321C294B26007219C4 /* ConnectWifi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectWifi.h; sourceTree = "<group>"; };
 		3A4979331C294B26007219C4 /* ConnectWifi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectWifi.m; sourceTree = "<group>"; };
 		3A6639991C2BD60D00E2BC82 /* ConnectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectManager.swift; sourceTree = "<group>"; };
+		3A6F5E871C3E09A1000EBDAE /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A77A56F78B7B5A6AA6C4B21B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				3A6639991C2BD60D00E2BC82 /* ConnectManager.swift */,
 				3A05BD981C33D7B600540413 /* Extension.swift */,
 				3A4049F51C3D340F0011C6DF /* PacketManager.swift */,
+				3A6F5E871C3E09A1000EBDAE /* MainView.swift */,
 			);
 			path = SocketDemo;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A05BD991C33D7B600540413 /* Extension.swift in Sources */,
+				3A6F5E881C3E09A1000EBDAE /* MainView.swift in Sources */,
 				3A4049F61C3D340F0011C6DF /* PacketManager.swift in Sources */,
 				3A66399A1C2BD60D00E2BC82 /* ConnectManager.swift in Sources */,
 				3A4979181C2934F3007219C4 /* ViewController.swift in Sources */,
